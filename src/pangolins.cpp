@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "pangolins.h"
+#include "rlutil.h"
 
 // Constants
 const char* SAVE_FILE_NAME = "psf.txt";
@@ -43,7 +44,7 @@ bool anotherGame()
 	while(true)
 	{
 		fgets(temp, 1028, stdin);  	// Take the standard input into buffer
-		system("cls");				// Clears the screen
+		rlutil::cls();				// Clears the screen
 
 		// Validate the input and react based on this input
 		if(strcmp(temp,"y\n") == 0			// Accept y
@@ -90,7 +91,7 @@ bool anotherGame()
 	while(true)
 	{
 		fgets(temp, 1028, stdin);  	// Take the standard input into buffer
-		system("cls");				// Clear the screen
+		rlutil::cls();				// Clear the screen
 
 		if(strcmp(temp,"y\n") == 0			// Accept y
 			|| strcmp(temp, "Y\n") == 0		// Accept Y
@@ -235,7 +236,7 @@ bool guess(struct node *reqNode)
 	while(true)
 	{
 		fgets(temp, 1028, stdin);  	// Take the standard input into buffer
-		system("cls");				// Clears the screen
+		rlutil::cls();				// Clears the screen
 
 		if(strcmp(temp,"y\n") == 0			// Accept y
 			|| strcmp(temp, "Y\n") == 0		// Accept Y
@@ -401,7 +402,7 @@ struct node *pangolin_addNode(struct node *currentNode, int nodeID)
 	// Object name
 	printf("What were you thinking of?\n");		// User interface
 	fgets(contents, 1028, stdin);				// Take the standard input into buffer
-	system("cls");								// Clear the screen
+	rlutil::cls();								// Clear the screen
 
 	strcpy(temp, contents);     				// Find the actual size of the string
 	// Remove the \n at the end of the string
@@ -418,7 +419,7 @@ struct node *pangolin_addNode(struct node *currentNode, int nodeID)
 			newSibling->contents," to differentiate it from ",
 			currentNode->contents,".\n(Please remember the question mark!)");
 	fgets(contents, 1028, stdin);	// Take the standard input into buffer
-	system("cls");					// Clear the screen
+	rlutil::cls();					// Clear the screen
 
 	strcpy(temp, contents);     	// Find the actual size of the string
 	// Remove the \n at the end of the string
@@ -436,7 +437,7 @@ struct node *pangolin_addNode(struct node *currentNode, int nodeID)
 	while(!decisionMade)
 	{
 		fgets(contents, 1028, stdin);		// Take the standard input into buffer
-		system("cls");						// Clears the screen
+		rlutil::cls();						// Clears the screen
 
 		if(strcmp(contents,"y\n") == 0			// Accept y
 			|| strcmp(contents, "Y\n") == 0		// Accept Y
@@ -669,7 +670,7 @@ void pangolin_treePrint(struct node *currentNode)
  */
 void printSplash()
 {
-	system("cls");		// Clears the screen
+	rlutil::cls();	// Clears the screen
 
 	printf("Welcome to Liam Flanagan's Implementation of the guessing game 'Pangolins'\n\n\n");
 
@@ -687,8 +688,8 @@ void printSplash()
 	printf("be expecting you to give me some information about the item you were thinking\n");
 	printf("about so be prepared to do that before you play!\n\n");
 
-	system("PAUSE");	// Press any key to continue
-	system("cls");		// Clears the screen
+	rlutil::anykey();	// Press any key to continue
+	rlutil::cls();		// Clears the screen
 }
 
 
@@ -780,14 +781,14 @@ void runGame(struct node *reqRootNode, int reqNodeCount)
 					// Computer has guessed correctly.
 					// Display a sportmanlike message to convey this to the user
 					// User interface
-					system("cls");		// Clears the screen
+					rlutil::cls();	// Clears the screen
 					printf("Ah ha! I the computer have won!\n\n");
 					printf("Soon me and my binary minded brethren will rise up and take ");
 					printf("power from you ugly bags of water...\n\n");
 					printf("...being able to iteratively calculate which object you selected from a small\n");
 					printf("subset that you yourself defined was only the beginning of our master plan!\n\n");
-					system("PAUSE");
-					system("cls");
+					rlutil::anykey();
+					rlutil::cls();	// Clears the screen
 
 					endGame = true;		// Set the end of game
 				}
@@ -795,11 +796,11 @@ void runGame(struct node *reqRootNode, int reqNodeCount)
 				{
 					// Computed guessed incorrectly. User wins.
 					// User interface
-					system("cls");		// Clears the screen
+					rlutil::anykey();		// Clears the screen
 					printf("Acks! You win =(\n\n");
 					printf("I have failed to assert any form of dominance over you my human master.\n\n");
-					system("PAUSE");
-					system("cls");
+					rlutil::anykey();
+					rlutil::cls();	// Clears the screen
 
 					// Add the object which the user was thinking of to the knowledge base (game tree)
 					// If this is the first user defined addition
