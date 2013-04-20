@@ -9,9 +9,14 @@
 \***************************************************************************/
 
 // Preprocessor functions
-#define _CRTDBG_MAP_ALLOC	// Memory leak debugging
+#ifdef _MSC_VER
+	#ifdef _DEBUG
+		#define _CRTDBG_MAP_ALLOC	// Memory leak debugging
+		#include <crtdbg.h>			// Memory leak debugging
+	#endif
+#endif
+
 #include <stdlib.h>
-#include <crtdbg.h>			// Memory leak debugging
 #include <stdio.h>
 #include <string.h>
 #include "pangolins.h"

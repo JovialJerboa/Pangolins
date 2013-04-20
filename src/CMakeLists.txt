@@ -1,1 +1,1 @@
-add_executable(Pangolins pangolins.cpp)
+add_executable(pangolins pangolins.cpp)
