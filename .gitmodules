@@ -1,0 +1,3 @@
+[submodule "rlutil"]
+	path = rlutil
+	url = git://github.com/tapio/rlutil
